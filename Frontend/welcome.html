@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - PoornimaChem</title>
+    <link rel="stylesheet" href="welcome.css">
+</head>
+
+<body>
+
+    <header class="welcome-navbar">
+        <div class="welcome-brand">PoornimaChem</div>
+        <nav class="welcome-navlinks">
+            <a href="workbench.html">Virtual Lab</a>
+            <a href="#about">About</a>
+            <a href="#team">Team</a>
+            <a href="#support">Support</a>
+        </nav>
+        <button class="welcome-cta" onclick="window.location.href='https://www.poornima.org/'">
+            Visit Poornima
+        </button>
+    </header>
+
+    <div id="root"></div>
+
+    <!-- React and ReactDOM from CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+
+        function WelcomePage() {
+            const [isHovered, setIsHovered] = useState(false);
+
+            const handleStartClick = () => {
+                // Navigate to the main PoornimaChem experience
+                window.location.href = './index.html';
+            };
+
+            return (
+                <div className="welcome-container">
+                    <h1 className="welcome-title">
+                        <span className="welcome-title-line">Welcome to</span>
+                        <span className="welcome-title-line">PoornimaChem -</span>
+                        <span className="welcome-title-line">Your Trusted</span>
+                        <span className="welcome-title-line">Chemistry Lab</span>
+                    </h1>
+
+                    <p className="welcome-description">
+                        At PoornimaChem, we are dedicated to providing top-notch chemistry lab services.
+                        Click here to explore our offerings and learn more.
+                    </p>
+
+                    <button
+                        className="start-button"
+                        onClick={handleStartClick}
+                        onMouseEnter={() => setIsHovered(true)}
+                        onMouseLeave={() => setIsHovered(false)}
+                    >
+                        Start
+                    </button>
+                </div>
+            );
+        }
+
+        // Render the React component
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<WelcomePage />);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Lab - PoornimaChem</title>
+    <link rel="stylesheet" href="workbench.css">
+    <link rel="stylesheet" href="experiment.css">
+    <link rel="stylesheet" href="simulation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- Main Header -->
+    <header class="lab-header">
+        <div class="header-left">
+            <div class="lab-logo">
+                <span class="logo-text">Virtual<br>Lab</span>
+            </div>
+            <nav class="menu-bar">
+                <div class="menu-item">File <i class="fas fa-caret-down"></i></div>
+                <div class="menu-item">Edit <i class="fas fa-caret-down"></i></div>
+                <div class="menu-item">View <i class="fas fa-caret-down"></i></div>
+                <div class="menu-item">Help <i class="fas fa-caret-down"></i></div>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="language-selector">
+                <i class="fas fa-globe"></i> EN
+            </div>
+            <div class="problem-title">Select Experiment</div>
+            <button onclick="resetWorkbench()"
+                style="background: none; border: 1px solid #777; color: #ccc; cursor: pointer; padding: 2px 10px; margin-left: 10px; font-size: 12px; border-radius: 4px;">Reset</button>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <div class="workspace">
+
+        <!-- Left Panel: Stockroom -->
+        <aside class="stockroom-panel">
+            <div class="panel-header">Stockroom</div>
+
+            <div class="stockroom-tabs">
+                <div class="tab active" onclick="switchTab('solutions')">
+                    <img src="../stockroom/solutions.svg" alt="Solutions" class="tab-icon">
+                    <span>Solutions</span>
+                </div>
+                <div class="tab" onclick="switchTab('glassware')">
+                    <img src="../stockroom/glassware.svg" alt="Glassware" class="tab-icon">
+                    <span>Glassware</span>
+                </div>
+                <div class="tab" onclick="switchTab('tools')">
+                    <img src="../stockroom/tools.svg" alt="Tools" class="tab-icon">
+                    <span>Tools</span>
+                </div>
+            </div>
+
+            <div class="stockroom-content" id="stockroom-content">
+                <!-- Solutions Tab -->
+                <div class="item-list" id="solutions-list">
+                    <div class="stock-item" draggable="true" data-type="H2O" data-img="../stockroom/solidBottle.svg"
+                        data-name="Distilled Water">
+                        <img src="../stockroom/solidBottle.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">H₂O</span>
+                            <span class="item-desc">Distilled Water</span>
+                            <span class="item-qty">3.0 L</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="stock-item" draggable="true" data-type="Metal1" data-img="../stockroom/solidBottle.svg"
+                        data-name="Metal 1">
+                        <img src="../stockroom/solidBottle.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">Metal 1</span>
+                            <span class="item-desc">Silver Solid</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="stock-item" draggable="true" data-type="Metal2" data-img="../stockroom/solidBottle.svg"
+                        data-name="Metal 2">
+                        <img src="../stockroom/solidBottle.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">Metal 2</span>
+                            <span class="item-desc">Dark Solid</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="stock-item" draggable="true" data-type="Metal3" data-img="../stockroom/solidBottle.svg"
+                        data-name="Metal 3">
+                        <img src="../stockroom/solidBottle.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">Metal 3</span>
+                            <span class="item-desc">Gold Solid</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <!-- Glassware Tab -->
+                <div class="item-list hidden" id="glassware-list">
+                    <div class="stock-item" draggable="true" data-type="Beaker600"
+                        data-img="../stockroom/600mLBeaker.svg" data-name="600mL Beaker">
+                        <img src="../stockroom/600mLBeaker.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">600mL Beaker</span>
+                            <span class="item-desc">Glassware</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="stock-item" draggable="true" data-type="Flask1000"
+                        data-img="../stockroom/1000mLFlask.svg" data-name="1000mL Flask">
+                        <img src="../stockroom/1000mLFlask.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">1000mL Flask</span>
+                            <span class="item-desc">Florence Flask</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="stock-item" draggable="true" data-type="Cylinder100"
+                        data-img="../stockroom/100mLGraduatedCylinder.svg" data-name="100mL Cylinder">
+                        <img src="../stockroom/100mLGraduatedCylinder.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">100mL Cylinder</span>
+                            <span class="item-desc">Graduated</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="stock-item" draggable="true" data-type="Pipette25"
+                        data-img="../stockroom/25mLPipette.svg" data-name="25mL Pipette">
+                        <img src="../stockroom/25mLPipette.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">25mL Pipette</span>
+                            <span class="item-desc">Volumetric</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="stock-item" draggable="true" data-type="Burette50"
+                        data-img="../stockroom/50mLBurette.svg" data-name="50mL Burette">
+                        <img src="../stockroom/50mLBurette.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">50mL Burette</span>
+                            <span class="item-desc">Titration</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                    <div class="stock-item" draggable="true" data-type="VolFlask500"
+                        data-img="../stockroom/500mLVolumetricFlask.svg" data-name="500mL Vol. Flask">
+                        <img src="../stockroom/500mLVolumetricFlask.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">500mL Vol. Flask</span>
+                            <span class="item-desc">Volumetric</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+
+                <!-- Tools Tab -->
+                <div class="item-list hidden" id="tools-list">
+                    <div class="stock-item" draggable="true" data-type="Scale" data-img="../stockroom/tools.svg"
+                        data-name="Digital Scale">
+                        <img src="../stockroom/tools.svg" class="item-icon">
+                        <div class="item-details">
+                            <span class="item-name">Scale</span>
+                            <span class="item-desc">Digital Balance</span>
+                        </div>
+                        <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Panel: Workbench -->
+        <main class="workbench-panel">
+            <div class="panel-header">Workbench 1</div>
+            <div class="workbench-area" id="workbench-area">
+                <!-- Dropped items will appear here -->
+                <div class="instruction-overlay">
+                    <p>Drag items from the Stockroom to this area to start experimenting.</p>
+                </div>
+
+                <!-- Experiment Status Panel -->
+                <div id="experiment-status" class="status-panel hidden">
+                    <div class="status-header">Experiment Status</div>
+                    <div class="status-content">
+                        <div class="step-instruction" id="step-instruction">Select an experiment to begin.</div>
+                        <div class="data-display" id="data-display">
+                            <!-- Dynamic Data Here -->
+                        </div>
+                        <div class="validation-msg" id="validation-msg"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Virtual Simulation View (Custom SVGs) -->
+            <div class="simulation-view-container" id="simulation-view">
+                <div class="sim-workbench-wrap">
+                  <div class="sim-bench">
+
+                    <!-- ====== EXPERIMENT 1: EDTA Hardness ====== -->
+                    <div class="sim-exp-section" id="sim-exp1">
+                      <div class="sim-exp-title">EXP 1 — EDTA Hardness Test</div>
+
+                      <svg class="sim-apparatus" width="160" height="340" viewBox="0 0 160 340">
+                        <!-- Stand rod -->
+                        <line x1="122" y1="6" x2="122" y2="240" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="98" y1="10" x2="146" y2="10" stroke="#888" stroke-width="3"/>
+                        <!-- Clamp -->
+                        <rect x="112" y="28" width="20" height="8" rx="2" fill="#aaa" stroke="#888" stroke-width="0.8"/>
+
+                        <!-- Burette body -->
+                        <rect x="108" y="36" width="18" height="110" rx="3.5" fill="rgba(200,235,255,0.22)" stroke="#7ab" stroke-width="1.4"/>
+                        <!-- EDTA liquid in burette -->
+                        <rect id="e1-burette-liquid" x="109.5" y="37" width="15" height="90" rx="2.5" fill="rgba(100,190,255,0.38)"/>
+                        <!-- Graduation lines -->
+                        <line x1="110" y1="52" x2="115" y2="52" stroke="#7ab" stroke-width="0.9"/>
+                        <text x="127" y="55" font-size="7" fill="#558" font-family="monospace">0</text>
+                        <line x1="110" y1="70" x2="115" y2="70" stroke="#7ab" stroke-width="0.9"/>
+                        <text x="127" y="73" font-size="7" fill="#558" font-family="monospace">5</text>
+                        <line x1="110" y1="88" x2="115" y2="88" stroke="#7ab" stroke-width="0.9"/>
+                        <text x="124" y="91" font-size="7" fill="#558" font-family="monospace">10</text>
+                        <line x1="110" y1="106" x2="115" y2="106" stroke="#7ab" stroke-width="0.9"/>
+                        <text x="124" y="109" font-size="7" fill="#558" font-family="monospace">15</text>
+                        <line x1="110" y1="124" x2="115" y2="124" stroke="#7ab" stroke-width="0.9"/>
+                        <text x="124" y="127" font-size="7" fill="#558" font-family="monospace">20</text>
+
+                        <!-- EDTA label on burette -->
+                        <rect x="80" y="60" width="26" height="14" rx="3" fill="rgba(255,255,210,0.88)" stroke="#bba" stroke-width="0.7"/>
+                        <text x="93" y="70" text-anchor="middle" font-size="7.5" fill="#443" font-family="monospace">EDTA</text>
+
+                        <!-- Burette lower tip -->
+                        <polygon points="110,146 126,146 123,164 113,164" fill="rgba(200,235,255,0.3)" stroke="#7ab" stroke-width="1.2"/>
+                        <!-- Tap / stopcock -->
+                        <rect x="107" y="142" width="20" height="7" rx="3" fill="#9cba8c" stroke="#6a8a5a" stroke-width="1"/>
+                        <line x1="117" y1="143" x2="117" y2="148" stroke="#5a7a4a" stroke-width="1.5"/>
+
+                        <!-- Animated drop -->
+                        <circle id="e1-drop" cx="117" cy="166" r="4.5" fill="rgba(80,180,255,0.78)" opacity="0"/>
+
+                        <!-- Conical Flask outline -->
+                        <polygon points="90,284 55,284 35,228 35,196 110,196 110,228" fill="none" stroke="#7ab" stroke-width="1.8"/>
+                        <!-- Flask liquid -->
+                        <polygon id="e1-liquid" points="87,281 58,281 38,232 38,210 106,210 106,232" fill="#8b3060"/>
+                        <!-- Liquid shine -->
+                        <line x1="44" y1="216" x2="54" y2="214" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+                        <!-- Flask neck -->
+                        <rect x="58" y="174" width="30" height="25" rx="5" fill="rgba(200,235,255,0.18)" stroke="#7ab" stroke-width="1.4"/>
+                        <!-- Stopper -->
+                        <rect x="60" y="172" width="26" height="6" rx="3" fill="rgba(220,220,180,0.7)" stroke="#aaa880" stroke-width="0.8"/>
+
+                        <!-- Reagent bottles left side -->
+                        <!-- EBT Indicator bottle -->
+                        <rect x="6" y="168" width="24" height="48" rx="4" fill="rgba(160,60,120,0.55)" stroke="#9a5090" stroke-width="1.2"/>
+                        <rect x="9" y="160" width="18" height="10" rx="3" fill="rgba(200,100,160,0.65)" stroke="#9a5090" stroke-width="0.9"/>
+                        <ellipse cx="18" cy="159" rx="6" ry="3" fill="rgba(60,40,60,0.5)" stroke="#8a4080" stroke-width="0.8"/>
+                        <rect x="4" y="202" width="28" height="12" rx="2" fill="rgba(255,248,220,0.9)" stroke="#cca" stroke-width="0.6"/>
+                        <text x="18" y="210" text-anchor="middle" font-size="7" fill="#442" font-family="monospace">EBT</text>
+
+                        <!-- Hard water bottle -->
+                        <rect x="6" y="238" width="24" height="44" rx="4" fill="rgba(160,210,255,0.55)" stroke="#6aa0cc" stroke-width="1.2"/>
+                        <rect x="9" y="230" width="18" height="10" rx="3" fill="rgba(180,225,255,0.65)" stroke="#6aa0cc" stroke-width="0.9"/>
+                        <rect x="4" y="270" width="28" height="12" rx="2" fill="rgba(255,248,220,0.9)" stroke="#cca" stroke-width="0.6"/>
+                        <text x="18" y="278" text-anchor="middle" font-size="6.5" fill="#442" font-family="monospace">Hard H₂O</text>
+
+                        <!-- Volume readout -->
+                        <rect x="28" y="292" width="88" height="16" rx="3" fill="rgba(30,30,60,0.65)"/>
+                        <text id="e1-vol-text" x="72" y="303" text-anchor="middle" font-size="8" fill="#a0d8f8" font-family="monospace">0.00 mL EDTA added</text>
+                      </svg>
+
+                      <div class="sim-status-badge" id="e1-status" style="background:#f8e8f0;color:#7a1050;">
+                        Wine red — EBT complexed with Ca²⁺/Mg²⁺
+                      </div>
+                      <button class="sim-btn-add" id="e1-btn" onclick="addEdtaDrop()">+ Add EDTA drop</button>
+                      <button class="sim-btn-reset" onclick="resetExp1()">↺ Reset experiment</button>
+                      <div class="sim-drops-counter">Drops: <span id="e1-drops">0</span> / 15 &nbsp;·&nbsp; endpoint @ 15</div>
+                    </div>
+
+                    <!-- ====== EXPERIMENT 2: Residual Chlorine ====== -->
+                    <div class="sim-exp-section" id="sim-exp2">
+                      <div class="sim-exp-title">EXP 2 — Residual Chlorine Test (DPD)</div>
+
+                      <svg class="sim-apparatus" width="160" height="340" viewBox="0 0 160 340">
+                        <!-- Pipette / dropper assembly -->
+                        <!-- Bulb -->
+                        <ellipse cx="82" cy="62" rx="14" ry="11" fill="rgba(255,160,180,0.55)" stroke="#c88" stroke-width="1.2"/>
+                        <!-- Stem -->
+                        <rect x="78" y="72" width="8" height="70" rx="3" fill="rgba(255,200,210,0.38)" stroke="#c88" stroke-width="1.2"/>
+                        <!-- Tip -->
+                        <polygon points="78,142 86,142 84,162 80,162" fill="rgba(255,190,200,0.45)" stroke="#c88" stroke-width="1"/>
+                        <!-- DPD label on pipette -->
+                        <rect x="54" y="88" width="22" height="13" rx="2.5" fill="rgba(255,240,200,0.9)" stroke="#cc8" stroke-width="0.6"/>
+                        <text x="65" y="97" text-anchor="middle" font-size="7" fill="#553" font-family="monospace">DPD</text>
+                        <line x1="76" y1="94" x2="64" y2="94" stroke="#cc8" stroke-width="0.5" stroke-dasharray="2,2"/>
+
+                        <!-- Animated drop -->
+                        <circle id="e2-drop" cx="82" cy="164" r="4.5" fill="rgba(255,90,130,0.85)" opacity="0"/>
+
+                        <!-- Wide beaker / flask -->
+                        <rect x="38" y="185" width="88" height="96" rx="8" fill="rgba(200,235,255,0.15)" stroke="#7ab" stroke-width="1.8"/>
+                        <!-- Liquid in beaker -->
+                        <rect id="e2-liquid" x="40" y="210" width="84" height="69" rx="5" fill="rgba(230,245,255,0.28)"/>
+                        <!-- Beaker graduation marks -->
+                        <line x1="41" y1="230" x2="48" y2="230" stroke="#7ab" stroke-width="0.9"/>
+                        <text x="50" y="233" font-size="7" fill="#558" font-family="monospace">25</text>
+                        <line x1="41" y1="248" x2="48" y2="248" stroke="#7ab" stroke-width="0.9"/>
+                        <text x="50" y="251" font-size="7" fill="#558" font-family="monospace">50</text>
+                        <line x1="41" y1="266" x2="48" y2="266" stroke="#7ab" stroke-width="0.9"/>
+                        <text x="50" y="269" font-size="7" fill="#558" font-family="monospace">75</text>
+                        <!-- Beaker spout -->
+                        <path d="M 120 188 Q 132 188 130 196" fill="none" stroke="#7ab" stroke-width="1.5" stroke-linecap="round"/>
+                        <!-- Shine -->
+                        <line x1="46" y1="218" x2="60" y2="215" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/>
+
+                        <!-- Colorimetric comparison scale -->
+                        <rect x="110" y="192" width="40" height="86" rx="4" fill="rgba(255,255,255,0.55)" stroke="#cc9" stroke-width="0.8"/>
+                        <text x="130" y="204" text-anchor="middle" font-size="7" fill="#554" font-family="monospace">Cl₂ scale</text>
+                        <rect x="116" y="208" width="18" height="10" rx="2" fill="rgba(240,248,255,0.6)" stroke="#ddd" stroke-width="0.4"/>
+                        <text x="125" y="216" text-anchor="middle" font-size="6" fill="#889" font-family="monospace">0</text>
+                        <rect x="116" y="221" width="18" height="10" rx="2" fill="rgba(255,225,235,0.75)"/>
+                        <text x="125" y="229" text-anchor="middle" font-size="6" fill="#a68" font-family="monospace">0.1</text>
+                        <rect x="116" y="234" width="18" height="10" rx="2" fill="rgba(255,190,210,0.85)"/>
+                        <text x="125" y="242" text-anchor="middle" font-size="6" fill="#c66" font-family="monospace">0.5</text>
+                        <rect x="116" y="247" width="18" height="10" rx="2" fill="rgba(250,140,175,0.9)"/>
+                        <text x="125" y="255" text-anchor="middle" font-size="6" fill="#c44" font-family="monospace">1.0</text>
+                        <rect x="116" y="260" width="18" height="10" rx="2" fill="rgba(220,60,110,0.9)"/>
+                        <text x="125" y="268" text-anchor="middle" font-size="6" fill="#a22" font-family="monospace">2.0</text>
+                        <text x="130" y="282" text-anchor="middle" font-size="6" fill="#554" font-family="monospace">mg/L</text>
+
+                        <!-- DPD reagent bottle -->
+                        <rect x="6" y="190" width="26" height="50" rx="4" fill="rgba(255,120,150,0.45)" stroke="#d88" stroke-width="1.2"/>
+                        <rect x="10" y="181" width="18" height="11" rx="3" fill="rgba(255,150,170,0.55)" stroke="#d88" stroke-width="0.9"/>
+                        <ellipse cx="19" cy="180" rx="6" ry="3" fill="rgba(80,40,50,0.5)" stroke="#c77" stroke-width="0.8"/>
+                        <rect x="4" y="228" width="30" height="12" rx="2" fill="rgba(255,248,220,0.9)" stroke="#cca" stroke-width="0.6"/>
+                        <text x="19" y="236" text-anchor="middle" font-size="7" fill="#442" font-family="monospace">DPD</text>
+
+                        <!-- Volume readout -->
+                        <rect x="26" y="292" width="90" height="16" rx="3" fill="rgba(30,30,60,0.65)"/>
+                        <text id="e2-vol-text" x="71" y="303" text-anchor="middle" font-size="8" fill="#a0d8f8" font-family="monospace">0 drops DPD added</text>
+                      </svg>
+
+                      <div class="sim-status-badge" id="e2-status" style="background:#eef4ff;color:#3050a0;">
+                        Colorless — awaiting DPD reagent
+                      </div>
+                      <button class="sim-btn-add" id="e2-btn" onclick="addDpdDrop()">+ Add DPD reagent drop</button>
+                      <button class="sim-btn-reset" onclick="resetExp2()">↺ Reset experiment</button>
+                      <div class="sim-drops-counter">Drops: <span id="e2-drops">0</span> / 5 &nbsp;·&nbsp; deeper pink = more Cl₂</div>
+                    </div>
+
+                    <!-- ====== EXPERIMENT 3: Dichromate Titration ====== -->
+                    <div class="sim-exp-section" id="sim-exp3">
+                      <div class="sim-exp-title">EXP 3 — Dichromate Titration (FAS)</div>
+
+                      <svg class="sim-apparatus" width="160" height="340" viewBox="0 0 160 340">
+                        <!-- Stand rod -->
+                        <line x1="120" y1="6" x2="120" y2="240" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+                        <line x1="96" y1="10" x2="144" y2="10" stroke="#888" stroke-width="3"/>
+                        <!-- Clamp -->
+                        <rect x="110" y="28" width="20" height="8" rx="2" fill="#aaa" stroke="#888" stroke-width="0.8"/>
+
+                        <!-- Burette body -->
+                        <rect x="106" y="36" width="18" height="110" rx="3.5" fill="rgba(255,220,170,0.22)" stroke="#c97" stroke-width="1.4"/>
+                        <!-- K2Cr2O7 liquid in burette (orange) -->
+                        <rect id="e3-burette-liquid" x="107.5" y="37" width="15" height="90" rx="2.5" fill="rgba(255,130,20,0.5)"/>
+                        <!-- Graduation lines -->
+                        <line x1="108" y1="52" x2="113" y2="52" stroke="#c97" stroke-width="0.9"/>
+                        <text x="125" y="55" font-size="7" fill="#764" font-family="monospace">0</text>
+                        <line x1="108" y1="70" x2="113" y2="70" stroke="#c97" stroke-width="0.9"/>
+                        <text x="125" y="73" font-size="7" fill="#764" font-family="monospace">5</text>
+                        <line x1="108" y1="88" x2="113" y2="88" stroke="#c97" stroke-width="0.9"/>
+                        <text x="122" y="91" font-size="7" fill="#764" font-family="monospace">10</text>
+                        <line x1="108" y1="106" x2="113" y2="106" stroke="#c97" stroke-width="0.9"/>
+                        <text x="122" y="109" font-size="7" fill="#764" font-family="monospace">15</text>
+                        <line x1="108" y1="124" x2="113" y2="124" stroke="#c97" stroke-width="0.9"/>
+                        <text x="122" y="127" font-size="7" fill="#764" font-family="monospace">20</text>
+
+                        <!-- K2Cr2O7 label -->
+                        <rect x="68" y="60" width="35" height="14" rx="3" fill="rgba(255,248,210,0.9)" stroke="#cc8" stroke-width="0.7"/>
+                        <text x="85" y="70" text-anchor="middle" font-size="7" fill="#552" font-family="monospace">K₂Cr₂O₇</text>
+
+                        <!-- Burette lower tip + tap -->
+                        <polygon points="108,146 124,146 121,164 111,164" fill="rgba(255,220,160,0.38)" stroke="#c97" stroke-width="1.2"/>
+                        <rect x="105" y="142" width="20" height="7" rx="3" fill="#d8b870" stroke="#b09050" stroke-width="1"/>
+                        <line x1="115" y1="143" x2="115" y2="148" stroke="#907030" stroke-width="1.5"/>
+
+                        <!-- Animated drop -->
+                        <circle id="e3-drop" cx="115" cy="166" r="4.5" fill="rgba(255,100,10,0.85)" opacity="0"/>
+
+                        <!-- Conical flask -->
+                        <polygon points="88,284 53,284 33,228 33,196 108,196 108,228" fill="none" stroke="#8bc" stroke-width="1.8"/>
+                        <!-- FAS liquid -->
+                        <polygon id="e3-liquid" points="85,281 56,281 36,232 36,210 104,210 104,232" fill="#5a9a50"/>
+                        <!-- Shine -->
+                        <line x1="42" y1="216" x2="52" y2="214" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" stroke-linecap="round"/>
+                        <!-- Flask neck -->
+                        <rect x="56" y="174" width="30" height="25" rx="5" fill="rgba(200,235,255,0.18)" stroke="#8bc" stroke-width="1.4"/>
+                        <!-- Stopper -->
+                        <rect x="58" y="172" width="26" height="6" rx="3" fill="rgba(220,220,180,0.7)" stroke="#aaa880" stroke-width="0.8"/>
+
+                        <!-- FAS bottle -->
+                        <rect x="6" y="168" width="24" height="48" rx="4" fill="rgba(70,165,70,0.5)" stroke="#5a9a5a" stroke-width="1.2"/>
+                        <rect x="9" y="160" width="18" height="10" rx="3" fill="rgba(100,200,100,0.6)" stroke="#5a9a5a" stroke-width="0.9"/>
+                        <ellipse cx="18" cy="159" rx="6" ry="3" fill="rgba(30,60,30,0.55)" stroke="#4a8a4a" stroke-width="0.8"/>
+                        <rect x="4" y="204" width="28" height="12" rx="2" fill="rgba(255,248,220,0.9)" stroke="#cca" stroke-width="0.6"/>
+                        <text x="18" y="212" text-anchor="middle" font-size="7" fill="#442" font-family="monospace">FAS</text>
+
+                        <!-- Diphenylamine bottle -->
+                        <rect x="6" y="234" width="24" height="44" rx="4" fill="rgba(70,70,190,0.42)" stroke="#6680cc" stroke-width="1.2"/>
+                        <rect x="9" y="226" width="18" height="10" rx="3" fill="rgba(100,100,220,0.5)" stroke="#6680cc" stroke-width="0.9"/>
+                        <ellipse cx="18" cy="225" rx="6" ry="3" fill="rgba(30,30,70,0.55)" stroke="#5570bb" stroke-width="0.8"/>
+                        <rect x="4" y="266" width="28" height="12" rx="2" fill="rgba(255,248,220,0.9)" stroke="#cca" stroke-width="0.6"/>
+                        <text x="18" y="274" text-anchor="middle" font-size="6.5" fill="#442" font-family="monospace">DPA ind.</text>
+
+                        <!-- Volume readout -->
+                        <rect x="20" y="292" width="100" height="16" rx="3" fill="rgba(30,30,60,0.65)"/>
+                        <text id="e3-vol-text" x="70" y="303" text-anchor="middle" font-size="8" fill="#a0d8f8" font-family="monospace">0.00 mL K₂Cr₂O₇</text>
+                      </svg>
+
+                      <div class="sim-status-badge" id="e3-status" style="background:#dff2e0;color:#1a5a28;">
+                        Green — Fe²⁺ present (pre-endpoint)
+                      </div>
+                      <button class="sim-btn-add" id="e3-btn" onclick="addDichromateDrop()">+ Add K₂Cr₂O₇ drop</button>
+                      <button class="sim-btn-reset" onclick="resetExp3()">↺ Reset experiment</button>
+                      <div class="sim-drops-counter">Drops: <span id="e3-drops">0</span> / 12 &nbsp;·&nbsp; endpoint @ 12</div>
+                    </div>
+
+                  </div>
+                  <div class="sim-bench-front"></div>
+                </div>
+
+                <!-- Legend -->
+                <div class="sim-legend-bar">
+                  <div class="sim-legend-item">EBT = Eriochrome Black T indicator</div>
+                  <div class="sim-legend-item">DPD = N,N-diethyl-p-phenylenediamine</div>
+                  <div class="sim-legend-item">FAS = Ferrous ammonium sulphate</div>
+                  <div class="sim-legend-item">DPA = Diphenylamine indicator</div>
+                  <div class="sim-legend-item">K₂Cr₂O₇ = Potassium dichromate</div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Context Menu for Workbench Items -->
+    <div id="context-menu" class="context-menu hidden">
+        <div class="menu-option" id="menu-inspect">Inspect / Properties</div>
+        <div class="menu-option" id="menu-rename">Rename</div>
+        <div class="menu-separator"></div>
+        <div class="menu-option delete-option" id="menu-remove">Remove</div>
+    </div>
+
+    <script src="workbench.js"></script>
+    <script src="simulation.js"></script>
+</body>
+
+</html>

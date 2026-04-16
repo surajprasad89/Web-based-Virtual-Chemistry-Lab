@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChemQuiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CENTERED TRANSPARENT IMAGE -->
+    <div class="center-image-container">
+        <img src="../images.png" alt="Chemistry" class="center-transparent-image">
+    </div>
+
+<header class="navbar">
+    <div class="logo">Chem Virtual Lab</div>
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="stoichiometry.html">Stoichiometry</a>
+        <a href="reactions.html">Reactions</a>
+        <a href="lab.html">Virtual Lab</a>
+        <a class="active" href="quiz.html">ChemQuiz</a>
+    </nav>
+    <div class="navbar-right">
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="navbar-logo">
+            <a href="https://www.poornima.org/online/?utm_source=Adsgrip&utm_medium=Meta&utm_campaign=Organic" target="_blank" rel="noopener noreferrer">
+                <img src="../PIET _ Logo_15-07-2025 (1).jpg" alt="Poornima Institute Logo" class="piet-logo">
+            </a>
+        </div>
+    </div>
+</header>
+
+<div class="quiz-container">
+    <div id="quiz-box">
+        <h2 id="question">Loading...</h2>
+
+        <div id="options"></div>
+
+        <button id="nextBtn" onclick="nextQuestion()" class="btn-primary" disabled>
+            Next
+        </button>
+    </div>
+
+    <div id="result-box" class="hidden">
+        <h2>Your Score</h2>
+        <p id="scoreText"></p>
+        <button class="btn-primary" onclick="restartQuiz()">Play Again</button>
+    </div>
+</div>
+
+<script src="quiz.js"></script>
+</body>
+</html>
+

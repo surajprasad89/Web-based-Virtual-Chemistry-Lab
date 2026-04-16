@@ -1,0 +1,73 @@
+/* Experiment Status Panel */
+.status-panel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-size: 13px;
+}
+
+.status-panel.hidden {
+    display: none;
+}
+
+.status-header {
+    background-color: #333;
+    color: #ffd700;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.status-content {
+    padding: 10px;
+    color: #333;
+}
+
+.step-instruction {
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #444;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #eee;
+}
+
+.data-label {
+    color: #666;
+}
+
+.data-value {
+    font-weight: bold;
+    color: #000;
+}
+
+.validation-msg {
+    margin-top: 10px;
+    padding: 5px;
+    background-color: #ffebee;
+    color: #d32f2f;
+    border: 1px solid #d32f2f;
+    border-radius: 4px;
+    display: none;
+    font-size: 12px;
+}
+
+.validation-msg.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #2e7d32;
+}

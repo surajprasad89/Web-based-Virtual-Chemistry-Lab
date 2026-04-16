@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PoornimaChem</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="videos.css">
+</head>
+
+<body>
+
+    <!-- CENTERED TRANSPARENT IMAGE -->
+    <div class="center-image-container">
+        <img src="../images.png" alt="Chemistry" class="center-transparent-image">
+    </div>
+
+    <!-- TOP NAVBAR -->
+    <header class="navbar">
+        <div class="logo">PoornimaChem</div>
+
+        <nav class="nav-links">
+            <a href="workbench.html">Virtual Lab</a>
+            <a href="#">About</a>
+
+            <a href="#">Help</a>
+        </nav>
+
+        <div class="navbar-right">
+            <div class="search-box">
+                <input type="text" placeholder="Search...">
+                <button>Search</button>
+            </div>
+            <div class="navbar-logo">
+                <a href="https://www.poornima.org/online/?utm_source=Adsgrip&utm_medium=Meta&utm_campaign=Organic"
+                    target="_blank" rel="noopener noreferrer">
+                    <img src="../PIET _ Logo_15-07-2025 (1).jpg" alt="Poornima Institute Logo" class="piet-logo">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN LAYOUT -->
+    <div class="container">
+
+        <!-- SIDE BAR -->
+        <aside class="sidebar">
+            <h3>LAB TOPIC</h3>
+
+            <div class="experiment-boxes">
+                <div class="experiment-box">Hardness of Water by EDTA Method</div>
+                <div class="experiment-box">Residual Chlorine in Water</div>
+                <div class="experiment-box">Dissolved Oxygen (DO) in Water</div>
+                <div class="experiment-box">Equilibrium</div>
+                <div class="experiment-box">Total Dissolved Solids (TDS) and Total Solids in Water</div>
+                <div class="experiment-box">Acid Concentration using pH Meter</div>
+                <div class="experiment-box">Electrical Conductivity (EC) of Water Sample</div>
+                <div class="experiment-box">Strength of FAS using K₂Cr₂O₇ and DPA Indicator</div>
+                <div class="experiment-box">Proximate Analysis of Coal</div>
+                <div class="experiment-box">Flash Point, Fire Point, Cloud and Pour Point of Lubricating Oil</div>
+                <div class="experiment-box">Kinematic Viscosity of Lubricating Oil (Redwood Viscometer No. 1)</div>
+                <div class="experiment-box">Preparation of Nylon 6,6 and Bakelite</div>
+            </div>
+
+            <h3>RESOURCES</h3>
+
+            <div class="experiment-boxes">
+                <a href="workbench.html" class="experiment-box">Virtual Labs</a>
+                <div class="experiment-box">Tutorials</div>
+                <div class="experiment-box">Books</div>
+                <a href="quiz.html" class="experiment-box">ChemQuiz</a>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="content">
+            <h1>RESOURCE TOPIC: <span id="experiment-title">Hardness of Water by EDTA Method</span></h1>
+            <div id="theory-content" class="theory-content"></div>
+        </main>
+
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- Logo Area -->
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <img src="../—Pngtree—chemistry class chemistry teacher education_5470859.png"
+                        alt="PoornimaChem Logo" width="80">
+                    <span>PoornimaChem</span>
+                </div>
+
+                <div class="footer-social">
+                    <button class="icon-btn">X</button>
+                    <button class="icon-btn">▶</button>
+                </div>
+                <p class="copyright">PoornimaChem 2025</p>
+            </div>
+
+            <!-- Footer Links -->
+            <div class="footer-links">
+
+
+                <div class="column">
+                    <h4>Company</h4>
+                    <a href="#">About us</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Affiliate program</a>
+                    <a href="#">Privacy policy</a>
+                    <a href="#">Terms of service</a>
+                </div>
+
+                <div class="column">
+                    <h4>Resources</h4>
+                    <a href="#">Webflow + Outseta</a>
+                    <a href="#">Webflow agencies</a>
+                    <a href="#">Best membership software</a>
+                    <a href="#">Status</a>
+                </div>
+
+                <div class="column">
+                    <h4>Developers</h4>
+                    <a href="#">Knowledge base</a>
+                    <a href="#">API docs</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Logo Bottom Right -->
+        <div class="footer-logo-bottom-right">
+            <img src="../images.png" alt="Poornima Institute Logo" class="footer-institute-logo">
+        </div>
+    </footer>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
+    <!-- Firebase Configuration -->
+    <script src="firebase-config.js"></script>
+
+    <!-- Firestore Utilities -->
+    <script src="firestore.js"></script>
+
+    <!-- Firestore Examples & Integration -->
+    <script src="db-examples.js"></script>
+
+    <!-- Your Custom Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>
