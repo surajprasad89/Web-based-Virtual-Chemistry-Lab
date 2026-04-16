@@ -12,13 +12,19 @@
 
     <header class="welcome-navbar">
         <div class="welcome-brand">PoornimaChem</div>
-        <nav class="welcome-navlinks">
+        <div class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="welcome-navlinks" id="nav-links">
             <a href="workbench.html">Virtual Lab</a>
             <a href="#about">About</a>
             <a href="#team">Team</a>
             <a href="#support">Support</a>
+            <a href="https://www.poornima.org/" class="mobile-cta">Visit Poornima</a>
         </nav>
-        <button class="welcome-cta" onclick="window.location.href='https://www.poornima.org/'">
+        <button class="welcome-cta desktop-cta" onclick="window.location.href='https://www.poornima.org/'">
             Visit Poornima
         </button>
     </header>
@@ -33,6 +39,36 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
+        const images = [
+            'assets/carousel/image1.png',
+            'assets/carousel/image2.png',
+            'assets/carousel/image3.png'
+        ];
+
+        function CarouselBackground() {
+            const [currentIndex, setCurrentIndex] = useState(0);
+
+            useEffect(() => {
+                const interval = setInterval(() => {
+                    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+                }, 5000); // Change image every 5 seconds
+                return () => clearInterval(interval);
+            }, []);
+
+            return (
+                <div className="carousel-background">
+                    {images.map((img, index) => (
+                        <div
+                            key={index}
+                            className={`carousel-slide ${index === currentIndex ? 'active' : ''}`}
+                            style={{ backgroundImage: `url(${img})` }}
+                        />
+                    ))}
+                    <div className="carousel-overlay"></div>
+                </div>
+            );
+        }
+
         function WelcomePage() {
             const [isHovered, setIsHovered] = useState(false);
 
@@ -42,34 +78,43 @@
             };
 
             return (
-                <div className="welcome-container">
-                    <h1 className="welcome-title">
-                        <span className="welcome-title-line">Welcome to</span>
-                        <span className="welcome-title-line">PoornimaChem -</span>
-                        <span className="welcome-title-line">Your Trusted</span>
-                        <span className="welcome-title-line">Chemistry Lab</span>
-                    </h1>
+                <>
+                    <CarouselBackground />
+                    <div className="welcome-container">
+                        <h1 className="welcome-title">
+                            <span className="welcome-title-line">Welcome to</span>
+                            <span className="welcome-title-line">PoornimaChem -</span>
+                            <span className="welcome-title-line">Your Trusted</span>
+                            <span className="welcome-title-line">Chemistry Lab</span>
+                        </h1>
 
-                    <p className="welcome-description">
-                        At PoornimaChem, we are dedicated to providing top-notch chemistry lab services.
-                        Click here to explore our offerings and learn more.
-                    </p>
+                        <p className="welcome-description">
+                            At PoornimaChem, we are dedicated to providing top-notch chemistry lab services.
+                            Click here to explore our offerings and learn more.
+                        </p>
 
-                    <button
-                        className="start-button"
-                        onClick={handleStartClick}
-                        onMouseEnter={() => setIsHovered(true)}
-                        onMouseLeave={() => setIsHovered(false)}
-                    >
-                        Start
-                    </button>
-                </div>
+                        <button
+                            className="start-button"
+                            onClick={handleStartClick}
+                            onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)}
+                        >
+                            Start
+                        </button>
+                    </div>
+                </>
             );
         }
 
         // Render the React component
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<WelcomePage />);
+
+        // Hamburger Menu Logic
+        document.getElementById('hamburger-menu').addEventListener('click', function() {
+            this.classList.toggle('active');
+            document.getElementById('nav-links').classList.toggle('open');
+        });
     </script>
 </body>
 

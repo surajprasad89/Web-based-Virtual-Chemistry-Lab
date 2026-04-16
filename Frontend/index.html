@@ -20,23 +20,30 @@
     <header class="navbar">
         <div class="logo">PoornimaChem</div>
 
-        <nav class="nav-links">
-            <a href="workbench.html">Virtual Lab</a>
-            <a href="#">About</a>
+        <div class="hamburger" id="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
-            <a href="#">Help</a>
-        </nav>
+        <div class="nav-wrapper" id="nav-wrapper">
+            <nav class="nav-links">
+                <a href="workbench.html">Virtual Lab</a>
+                <a href="#">About</a>
+                <a href="#">Help</a>
+            </nav>
 
-        <div class="navbar-right">
-            <div class="search-box">
-                <input type="text" placeholder="Search...">
-                <button>Search</button>
-            </div>
-            <div class="navbar-logo">
-                <a href="https://www.poornima.org/online/?utm_source=Adsgrip&utm_medium=Meta&utm_campaign=Organic"
-                    target="_blank" rel="noopener noreferrer">
-                    <img src="../PIET _ Logo_15-07-2025 (1).jpg" alt="Poornima Institute Logo" class="piet-logo">
-                </a>
+            <div class="navbar-right">
+                <div class="search-box">
+                    <input type="text" placeholder="Search...">
+                    <button>Search</button>
+                </div>
+                <div class="navbar-logo">
+                    <a href="https://www.poornima.org/online/?utm_source=Adsgrip&utm_medium=Meta&utm_campaign=Organic"
+                        target="_blank" rel="noopener noreferrer">
+                        <img src="../PIET _ Logo_15-07-2025 (1).jpg" alt="Poornima Institute Logo" class="piet-logo">
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -45,8 +52,10 @@
     <div class="container">
 
         <!-- SIDE BAR -->
-        <aside class="sidebar">
-            <h3>LAB TOPIC</h3>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-toggle" id="sidebar-toggle">Experiment Topics <span>▼</span></div>
+            <div class="sidebar-content">
+                <h3>LAB TOPIC</h3>
 
             <div class="experiment-boxes">
                 <div class="experiment-box">Hardness of Water by EDTA Method</div>
@@ -70,6 +79,7 @@
                 <div class="experiment-box">Tutorials</div>
                 <div class="experiment-box">Books</div>
                 <a href="quiz.html" class="experiment-box">ChemQuiz</a>
+            </div>
             </div>
         </aside>
 
